@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 80vh;
+
+}
+
+#card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+
+footer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    height: 20vh;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 20vh;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
