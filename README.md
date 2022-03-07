@@ -30,7 +30,7 @@
     * set-on-board logic
     * reset game
 ***
-### ***Screenshots***
+
 
 ### ***Future Updates***
 - [] Basic HTML

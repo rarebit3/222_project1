@@ -28,3 +28,8 @@ let deck = [
     {color: purple, shape: squiggle, number: 3}
     ]
 
+function startGame() {
+    let index = Math.floor(Math.random()) * deck.length
+    let card = deck[index]
+}
+

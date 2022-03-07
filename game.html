@@ -9,28 +9,35 @@
     <title>SET: Play!</title>
 </head>
 <body>
-    <header>Play the game you dummy! Why are you looking up here?</header>
-    <div class="cardContainer">
-        <div class="card" id="c1">card 1</div>
-        <div class="card" id="c2">card 2</div>
-        <div class="card" id="c3">card 3</div>
-        <div class="card" id="c4">card 4</div>
-        <div class="card" id="c5">card 5</div>
-        <div class="card" id="c6">card 6</div>
-        <div class="card" id="c7">card 7</div>
-        <div class="card" id="c8">card 8</div>
-        <div class="card" id="c9">card 9</div>
-        <div class="card" id="c10">card 10</div>
-        <div class="card" id="c11">card 11</div>
-        <div class="card" id="c12">card 12</div>
+    <nav class="col-1">
+        <button onclick="startGame()">Start game</button>
+        <button onclick="resetGame()">reset</button>
+        <button onclick="findSt()">help</button>
+    </nav>
+    <div class="col-2">
+        <header>stuff in header</header>
+      <main class="content">
+        <div class="cardContainer">
+            <div class="card" id="c1">card 1</div>
+            <div class="card" id="c2">card 2</div>
+            <div class="card" id="c3">card 3</div>
+            <div class="card" id="c4">card 4</div>
+            <div class="card" id="c5">card 5</div>
+            <div class="card" id="c6">card 6</div>
+            <div class="card" id="c7">card 7</div>
+            <div class="card" id="c8">card 8</div>
+            <div class="card" id="c9">card 9</div>
+            <div class="card" id="c10">card 10</div>
+            <div class="card" id="c11">card 11</div>
+            <div class="card" id="c12">card 12</div>
+        </div>
+        <aside> 
+          <div id="cardsRemaining">cards in deck</div>
+          <div id="timer">Timer</div>
+          <div id="setsFound">Sets Found: </div>
+        </aside>
+      </main>
+        <footer>Stuff in footer</footer>
     </div>
-    <div class="menu">
-        <div>cards left in deck</div>
-        <div>timer</div>
-        <button>reset</button>
-        <button>help</button>
-        
-    </div>
-    <footer>Stuff in the footer!</footer>
-</body>
-</html>
+  </body>
+  </html>
