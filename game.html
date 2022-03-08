@@ -10,9 +10,9 @@
 </head>
 <body>
     <nav class="col-1">
-        <button onclick="startGame()">Start game</button>
-        <button onclick="resetGame()">reset</button>
-        <button onclick="findSet()">help</button>
+        <button id="idStartGame" onclick="startGame()">Start game</button>
+        <button id="idResetGame" onclick="resetGame()">reset</button>
+        <button id="idFindSet" onclick="findSet()">help</button>
     </nav>
     <div class="col-2">
         <header>stuff in header</header>
@@ -32,9 +32,9 @@
             <div class="card" id="c12">card 12</div>
         </div>
         <aside> 
-          <div id="cardsRemaining">cards in deck</div>
-          <div id="timer">Timer</div>
-          <div id="setsFound">Sets Found: </div>
+          <span id="cardsRemaining">cards in deck</span>
+          <span id="minutes">00</span>:<span id="seconds">00</span>
+          <span id="setsFound">Sets Found: </span>
         </aside>
       </main>
         <footer>Stuff in footer</footer>
