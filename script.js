@@ -1,4 +1,6 @@
 let checkArray = []
+let setsFound = 0
+let timer = 0
 
 let deck = [
     {color: 'red', shape: 'oval', number: 1},
@@ -45,10 +47,19 @@ function startGame() {
     allCards.forEach(e => {dealCard(e)}
 )}
 
+function resetGame() {
+
+}
+
 allCards.forEach(e => {
     e.addEventListener('click', function(event) {
         console.log('box clicked', event);
 
-        e.setAttribute('style', border)
+        e.setAttribute('style', 'border: 3px solid red')
+        
         })
 })
+
+function checkSet() {
+
+}
