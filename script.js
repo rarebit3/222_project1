@@ -48,6 +48,7 @@ function dealCard(location) {
     //deplete deck
     deck.splice(randomIndex, 1);
     cardsRemaining.innerText = `Cards Remaining: ${deck.length}`;
+    console.log(location)
     return deck;
     
 }
@@ -58,12 +59,12 @@ function startGame() {
     allCards.forEach(e => {dealCard(e)});
     document.getElementById("idStartGame").disabled = true
     //TIMER!?
-    // let sec = 0;
-    // function pad ( val ) { return val > 9 ? val : "0" + val; };
-    // let timer = setInterval( function(){
-    //     document.getElementById("seconds").innerHTML=pad(++sec%60);
-    //     document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
-    // }, 1000);
+    let sec = 0;
+    function pad ( val ) { return val > 9 ? val : "0" + val; };
+    let timer = setInterval( function(){
+        document.getElementById("seconds").innerHTML=pad(++sec%60);
+        document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
+    }, 1000);
 }
 
 function resetGame() {
@@ -117,7 +118,7 @@ function resetGame() {
 allCards.forEach(e => {
     e.addEventListener('click', function(event) {
         console.log('box clicked', event);
-
+        
         e.setAttribute('style', 'border: 3px solid red')
         //if selected, deselect
         //else if array empty, push to checkArray[0]
@@ -126,3 +127,26 @@ allCards.forEach(e => {
 
         })
 })
+
+
+//WIN LOGIC PSUEDO-CODE
+// let colorSet = false
+// let numberSet = false
+// let shapeSet = false
+// if (colorCheck == ['red', 'red', 'red',] || ['green', 'green', 'green',] || ['purple', 'purple', 'purple',] || ['red', 'green', 'purple',]) {
+//     colorSet = true
+// }
+// if (numberCheck == [1, 1, 1,] || [2, 2, 2,] || [3, 3, 3,] || [1, 2, 3,]) {
+//     numberSet = true
+// }
+// if (shapeSet == ['oval', 'oval', 'oval',] || ['diamond', 'diamond', 'diamond',] || ['squiggle', 'squiggle', 'squiggle',] || ['oval', 'diamond', 'squiggle',]) {
+//     shapeSet = true
+// }
+
+// if (colorSet === true && numberSet === true && shapeSet === true) {
+//     removeCards(selected cards)
+//     dealCard(to empty locations)
+
+// } else {
+//     deslectCards()
+// }

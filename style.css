@@ -38,6 +38,7 @@
   }
   .cardContainer {
     display: flex;
+    justify-content: space-around;
     flex: 3;
     min-height: 80vh;
     flex-wrap: wrap;
