@@ -15,7 +15,7 @@
     * Greeting
     * Enter name
     * possible game modes
-    * start game
+    * start game -> go to next screen
 * Game Page HTML
     * 3x3 divs for cards
     * menu nav
@@ -33,9 +33,9 @@
 
 
 ### ***Future Updates***
-- [] Basic HTML
-- [] basic css
-- [] render cards
+- [x] Basic HTML
+- [x] basic css
+- [] get cards on board
 
 ***
 ### ***Credits***
