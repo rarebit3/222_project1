@@ -1,46 +1,62 @@
 //Global Variables
 
 const gameDeck = [
-    {location: '', color: 'red', shape: 'oval', number: 1},
-    {location: '', color: 'red', shape: 'oval', number: 2},
-    {location: '', color: 'red', shape: 'oval', number: 3},
-    {location: '', color: 'red', shape: 'diamond', number: 1},
-    {location: '', color: 'red', shape: 'diamond', number: 2},
-    {location: '', color: 'red', shape: 'diamond', number: 3},
-    {location: '', color: 'red', shape: 'squiggle', number: 1},
-    {location: '', color: 'red', shape: 'squiggle', number: 2},
-    {location: '', color: 'red', shape: 'squiggle', number: 3},
-    {location: '', color: 'green', shape: 'oval', number: 1},
-    {location: '', color: 'green', shape: 'oval', number: 2},
-    {location: '', color: 'green', shape: 'oval', number: 3},
-    {location: '', color: 'green', shape: 'diamond', number: 1},
-    {location: '', color: 'green', shape: 'diamond', number: 2},
-    {location: '', color: 'green', shape: 'diamond', number: 3},
-    {location: '', color: 'green', shape: 'squiggle', number: 1},
-    {location: '', color: 'green', shape: 'squiggle', number: 2},
-    {location: '', color: 'green', shape: 'squiggle', number: 3},
-    {location: '', color: 'purple', shape: 'oval', number: 1},
-    {location: '', color: 'purple', shape: 'oval', number: 2},
-    {location: '', color: 'purple', shape: 'oval', number: 3},
-    {location: '', color: 'purple', shape: 'diamond', number: 1},
-    {location: '', color: 'purple', shape: 'diamond', number: 2},
-    {location: '', color: 'purple', shape: 'diamond', number: 3},
-    {location: '', color: 'purple', shape: 'squiggle', number: 1},
-    {location: '', color: 'purple', shape: 'squiggle', number: 2},
-    {location: '', color: 'purple', shape: 'squiggle', number: 3}
+    {selected: false,location: '', color: 'red', shape: 'oval', number: 1},
+    {selected: false,location: '', color: 'red', shape: 'oval', number: 2},
+    {selected: false,location: '', color: 'red', shape: 'oval', number: 3},
+    {selected: false,location: '', color: 'red', shape: 'diamond', number: 1},
+    {selected: false,location: '', color: 'red', shape: 'diamond', number: 2},
+    {selected: false,location: '', color: 'red', shape: 'diamond', number: 3},
+    {selected: false,location: '', color: 'red', shape: 'squiggle', number: 1},
+    {selected: false,location: '', color: 'red', shape: 'squiggle', number: 2},
+    {selected: false,location: '', color: 'red', shape: 'squiggle', number: 3},
+    {selected: false,location: '', color: 'green', shape: 'oval', number: 1},
+    {selected: false,location: '', color: 'green', shape: 'oval', number: 2},
+    {selected: false,location: '', color: 'green', shape: 'oval', number: 3},
+    {selected: false,location: '', color: 'green', shape: 'diamond', number: 1},
+    {selected: false,location: '', color: 'green', shape: 'diamond', number: 2},
+    {selected: false,location: '', color: 'green', shape: 'diamond', number: 3},
+    {selected: false,location: '', color: 'green', shape: 'squiggle', number: 1},
+    {selected: false,location: '', color: 'green', shape: 'squiggle', number: 2},
+    {selected: false,location: '', color: 'green', shape: 'squiggle', number: 3},
+    {selected: false,location: '', color: 'purple', shape: 'oval', number: 1},
+    {selected: false,location: '', color: 'purple', shape: 'oval', number: 2},
+    {selected: false,location: '', color: 'purple', shape: 'oval', number: 3},
+    {selected: false,location: '', color: 'purple', shape: 'diamond', number: 1},
+    {selected: false,location: '', color: 'purple', shape: 'diamond', number: 2},
+    {selected: false,location: '', color: 'purple', shape: 'diamond', number: 3},
+    {selected: false,location: '', color: 'purple', shape: 'squiggle', number: 1},
+    {selected: false,location: '', color: 'purple', shape: 'squiggle', number: 2},
+    {selected: false,location: '', color: 'purple', shape: 'squiggle', number: 3}
     ]
+// const selectedInit = [
+//     {location: '0', },
+//     {location: '1', selected: false},
+//     {location: '2', selected: false},
+//     {location: '3', selected: false},
+//     {location: '4', selected: false},
+//     {location: '5', selected: false},
+//     {location: '6', selected: false},
+//     {location: '7', selected: false},
+//     {location: '8', selected: false},
+//     {location: '9', selected: false},
+//     {location: '10', selected: false},
+//     {location: '11', selected: false},
+//     ]
 let deck = gameDeck
+// let selectedDivs = selectedInit
 let checkArray = []
 let placedCards = []
 let selectedCards = []
 let setsFound = 0
-let allCards = document.querySelectorAll('div.card')
+let allCardSlots = document.querySelectorAll('div.card')
 let cardsRemaining = document.querySelector('#cardsRemaining')
 cardsRemaining.innerText = `Cards Remaining: ${deck.length}`
 
 
+
 function startGame() {
-    allCards.forEach(e => {dealCard(e)});
+    allCardSlots.forEach(e => {dealCard(e)});
     document.getElementById("idStartGame").disabled = true
     //TIMER!?
 //     let sec = 0;
@@ -57,7 +73,7 @@ function dealCard(divLocation) {
     let card = deck[randomIndex];
     //paste card and link location
     card.location = divLocation.id
-    divLocation.innerText = `${card.color}, ${card.shape}, ${card.number}, ${card.location}`;
+    divLocation.innerText = `${card.location}, ${card.color}, ${card.shape}, ${card.number}`;
     //deplete deck
     placedCards.push(card)
     deck.splice(randomIndex, 1);
@@ -74,10 +90,10 @@ function resetGame() {
     selectedCards = [];
     setsFound = 0;
     deck = gameDeck
-    allCards.forEach(e => {
+    allCardSlots.forEach(e => {
         e.innerText = ""
             });
-    allCards.forEach(e => {
+    allCardSlots.forEach(e => {
         e.setAttribute('style', 'border: 1px solid orange')});
     document.getElementById("idStartGame").disabled = false;
     cardsRemaining.innerText = `Cards Remaining: ${deck.length}`;
@@ -88,21 +104,30 @@ function resetGame() {
     // clearInterval ( timer );
 }
 
-function selectCard(event) {
-    selectedCards.push(placedCards[this.id])
-    console.log(selectedCards)
-
-    // let card = cardSlotId.parseInt
-    // selectedCards.push(selectedCards[card])
-
-    
+function selectCard() {
 }
 
 
-//Event Listeners
-allCards.forEach(e => {e.addEventListener('click', selectCard)})
 
-//WIN LOGIC PSUEDO-CODE
+
+//Event Listeners with some help from Tim Ellis
+allCardSlots.forEach(e => {e.addEventListener('click', function() {
+    e.selected = !e.selected;
+    if (!selectedCards.includes(e)) selectedCards.push(e);
+    else if (selectedCards[0] == e) selectedCards.shift();
+    else selectedCards.pop();
+    e.selected ? e.classList.add("highlight") : e.classList.remove("highlight");
+// if (selectedCards.length > 2) {
+//   checkSet(selectedCards);
+   console.log(selectedCards)
+})}) 
+    
+
+    
+
+  
+
+// function checkSet
 // let colorSet = false
 // let numberSet = false
 // let shapeSet = false
