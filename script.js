@@ -1,5 +1,33 @@
 //Global Variables
-
+const gameDeck = [
+    {selected: false,location: '', color: 'red', shape: 'oval', number: 1},
+    {selected: false,location: '', color: 'red', shape: 'oval', number: 2},
+    {selected: false,location: '', color: 'red', shape: 'oval', number: 3},
+    {selected: false,location: '', color: 'red', shape: 'diamond', number: 1},
+    {selected: false,location: '', color: 'red', shape: 'diamond', number: 2},
+    {selected: false,location: '', color: 'red', shape: 'diamond', number: 3},
+    {selected: false,location: '', color: 'red', shape: 'squiggle', number: 1},
+    {selected: false,location: '', color: 'red', shape: 'squiggle', number: 2},
+    {selected: false,location: '', color: 'red', shape: 'squiggle', number: 3},
+    {selected: false,location: '', color: 'green', shape: 'oval', number: 1},
+    {selected: false,location: '', color: 'green', shape: 'oval', number: 2},
+    {selected: false,location: '', color: 'green', shape: 'oval', number: 3},
+    {selected: false,location: '', color: 'green', shape: 'diamond', number: 1},
+    {selected: false,location: '', color: 'green', shape: 'diamond', number: 2},
+    {selected: false,location: '', color: 'green', shape: 'diamond', number: 3},
+    {selected: false,location: '', color: 'green', shape: 'squiggle', number: 1},
+    {selected: false,location: '', color: 'green', shape: 'squiggle', number: 2},
+    {selected: false,location: '', color: 'green', shape: 'squiggle', number: 3},
+    {selected: false,location: '', color: 'purple', shape: 'oval', number: 1},
+    {selected: false,location: '', color: 'purple', shape: 'oval', number: 2},
+    {selected: false,location: '', color: 'purple', shape: 'oval', number: 3},
+    {selected: false,location: '', color: 'purple', shape: 'diamond', number: 1},
+    {selected: false,location: '', color: 'purple', shape: 'diamond', number: 2},
+    {selected: false,location: '', color: 'purple', shape: 'diamond', number: 3},
+    {selected: false,location: '', color: 'purple', shape: 'squiggle', number: 1},
+    {selected: false,location: '', color: 'purple', shape: 'squiggle', number: 2},
+    {selected: false,location: '', color: 'purple', shape: 'squiggle', number: 3}
+    ]
 let deck = gameDeck;
 let checkArray = [];
 let placedCards = [];
@@ -60,51 +88,51 @@ function resetGame() {
   // clearInterval ( timer );
 }
 
-function selectCard() {}
 
-//Event Listeners with some help from Tim Ellis
-allCardSlots.forEach((e) => {
+
+allCardSlots.forEach((e, divLocation) => {
   e.addEventListener("click", function () {
     e.selected = !e.selected;
-    if (!selectedCards.includes(e)) selectedCards.push(e)
-    else if (selectedCards[0] == e) selectedCards.shift()
-    else selectedCards.pop();
+    selectedCards.push(placedCards[divLocation]);
     e.selected ? e.classList.add("highlight") : e.classList.remove("highlight");
-    console.log(selectedCards);
+    console.log();
     if (selectedCards.length > 2) {
+        
+        console.log(selectedCards);
       checkSet(selectedCards);
     }
   });
 });
 
-function checkSet() {
+function checkSet(selectedCards) {
   let colorCheck = [];
   let numberCheck = [];
   let shapeCheck = [];
   let colorSet = false;
   let numberSet = false;
   let shapeSet = false;
-  selectedCards.forEach((e) => colorCheck.push(e[1]));
-  selectedCards.forEach((e) => numberCheck.push(e[2]));
-  selectedCards.forEach((e) => shapeCheck.push(e[3]));
-  if (
-    colorCheck == ["red", "red", "red"] || ["green", "green", "green"] || ["purple", "purple", "purple"] || ["red", "green", "purple"]
+  selectedCards.forEach((e) => colorCheck.push(e.color));
+  selectedCards.forEach((e) => numberCheck.push(e.number));
+  selectedCards.forEach((e) => shapeCheck.push(e.shape));
+  console.log(colorCheck)
+  if (colorCheck === ["red", "red", "red"] || ["green", "green", "green"] || ["purple", "purple", "purple"] || ["red", "green", "purple"]
   ) {
-    colorSet = true;
-  }
-  if (numberCheck == [1, 1, 1] || [2, 2, 2] || [3, 3, 3] || [1, 2, 3]) {
+    console.log(colorCheck)
+     colorSet = true;
+  } else { colorSet = false}
+  if (numberCheck === [1, 1, 1] || [2, 2, 2] || [3, 3, 3] || [1, 2, 3]) {
     numberSet = true;
   }
   if (
-    shapeSet == ["oval", "oval", "oval"] || ["diamond", "diamond", "diamond"] || ["squiggle", "squiggle", "squiggle"] || ["oval", "diamond", "squiggle"]
+    shapeCheck === ["oval", "oval", "oval"] || ["diamond", "diamond", "diamond"] || ["squiggle", "squiggle", "squiggle"] || ["oval", "diamond", "squiggle"]
   ) {
     shapeSet = true;
   }
-  if (colorSet === true && numberSet === true && shapeSet === true) {
+  if (colorSet === true /*&& numberSet === true && shapeSet === true*/) {
     console.log("Got a SET!");
     // removeCards()
     // dealCard()
-  } //  else {
+  }   else {console.log('not a set')}
   //        deslectCards(
   //      }
 }
