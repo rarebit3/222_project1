@@ -37,6 +37,7 @@ let allCardSlots = document.querySelectorAll("div.card");
 let cardsRemaining = document.querySelector("#cardsRemaining");
 cardsRemaining.innerText = `Cards Remaining: ${deck.length}`;
 
+
 function startGame() {
   allCardSlots.forEach((e) => {
     dealCard(e);
@@ -97,42 +98,28 @@ allCardSlots.forEach((e, divLocation) => {
     e.selected ? e.classList.add("highlight") : e.classList.remove("highlight");
     console.log();
     if (selectedCards.length > 2) {
-        
-        console.log(selectedCards);
-      checkSet(selectedCards);
+      checkColor(selectedCards);
+      checkShape(selectedCards);
+      checkNumber(selectedCards);
     }
   });
 });
 
-function checkSet(selectedCards) {
-  let colorCheck = [];
-  let numberCheck = [];
-  let shapeCheck = [];
-  let colorSet = false;
-  let numberSet = false;
-  let shapeSet = false;
-  selectedCards.forEach((e) => colorCheck.push(e.color));
-  selectedCards.forEach((e) => numberCheck.push(e.number));
-  selectedCards.forEach((e) => shapeCheck.push(e.shape));
-  console.log(colorCheck)
-  if (colorCheck === ["red", "red", "red"] || ["green", "green", "green"] || ["purple", "purple", "purple"] || ["red", "green", "purple"]
-  ) {
-    console.log(colorCheck)
-     colorSet = true;
-  } else { colorSet = false}
-  if (numberCheck === [1, 1, 1] || [2, 2, 2] || [3, 3, 3] || [1, 2, 3]) {
-    numberSet = true;
-  }
-  if (
-    shapeCheck === ["oval", "oval", "oval"] || ["diamond", "diamond", "diamond"] || ["squiggle", "squiggle", "squiggle"] || ["oval", "diamond", "squiggle"]
-  ) {
-    shapeSet = true;
-  }
-  if (colorSet === true /*&& numberSet === true && shapeSet === true*/) {
-    console.log("Got a SET!");
-    // removeCards()
-    // dealCard()
-  }   else {console.log('not a set')}
-  //        deslectCards(
-  //      }
-}
+
+
+function checkColor(n) {
+    if (n[0].color == n[1].color == n[2].color) return true;
+    else if (n[0].color != n[1].color && n[0].color != n[2].color && n[1].color != n[2].color) return true;
+    else return false;
+     }
+function checkShape(n) {
+    if (n[0].shape == n[1].shape == n[2].shape) return true;
+    else if (n[0].shape != n[1].shape && n[0].shape != n[2].shape && n[1].shape != n[2].shape) return true;
+    else return false;
+     }
+function checkColor(n) {
+    if (n[0].number == n[1].number == n[2].number) return true;
+    else if (n[0].number != n[1].number && n[0].number != n[2].number && n[1].number != n[2].number) return true;
+    else return false;
+     }
+     
