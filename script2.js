@@ -32,10 +32,14 @@ let deck = gameDeck;
 let placedCards = [];
 let selectedCards = [];
 let setsFound = 0;
-const allCardSlots = document.querySelectorAll("div.card");
-const cardsRemaining = document.querySelector("#cardsRemaining");
+let allCardSlots = document.querySelectorAll("div.card");
+let cardsRemaining = document.querySelector("#cardsRemaining");
 cardsRemaining.innerText = `Cards Remaining: ${deck.length}`;
-let foundSets = [];
+let numberCheck = false
+let shapeCheck = false
+let colorCheck = false
+
+
 
 function startGame() {
   allCardSlots.forEach((e) => {
@@ -60,76 +64,60 @@ function dealCard(divLocation) {
 }
 
 function resetGame() {
-  placedCards = [];
-  selectedCards.forEach((e) => {
-    selectedCards.pop();
-  });
-  foundSets.forEach((e) => {
-    foundSets.pop();
-  });
-  setsFound = 0;
-  deck = gameDeck;
-  allCardSlots.forEach((e) => {
+  //All the things become 0
+    placedCards = [];
+    selectedCards = [];
+    setsFound = 0;
+    deck = gameDeck;
+    allCardSlots.forEach((e) => {
     e.innerText = "";
   });
-  document.querySelectorAll(".highlight").forEach((e) => {
+    document.querySelectorAll(".highlight").forEach((e) => {
     e.classList.remove("highlight");
   });
-  document.getElementById("idStartGame").disabled = false;
-  cardsRemaining.innerText = `Cards Remaining: ${deck.length}`;
+    document.getElementById("idStartGame").disabled = false;
+    cardsRemaining.innerText = `Cards Remaining: ${deck.length}`;
 }
 
-//some syntax credited to Tim ellis
+
+
 allCardSlots.forEach((e, divLocation) => {
   e.addEventListener("click", function clickDiv() {
     e.selected = !e.selected;
     e.selected ? e.classList.add("highlight") : e.classList.remove("highlight");
     if (!selectedCards.includes(placedCards[divLocation]))
-      selectedCards.push(placedCards[divLocation]);
+    selectedCards.push(placedCards[divLocation]);
     else selectedCards.pop();
-    
     console.log(selectedCards);
     if (selectedCards.length > 2) {
-      checkSet(selectedCards);
-    }
+        checkSet(selectedCards);
+       }
+    
   });
+  
 });
 
 function checkSet(selectedCards) {
-//   if all elements correct
-  if (
-    checkColor(selectedCards) == true 
-    && checkShape(selectedCards) == true
-    && checkNumber(selectedCards) == true
-  ) { console.log('set found')
-    // selectedCards.forEach((e) => {
-      // foundSets.push(e);
-    // dealCard(document.querySelectorAll(`#${e.id.parseInt}`));
-    //   draw new cards at selected card locations
-    //   empty selectedCards
-    // });
-    } else {
-    document.querySelectorAll(".highlight").forEach((e) => {
-      e.classList.remove("highlight");
-    });
-    selectedCards.forEach((e) => {
-      selectedCards.pop();
-    });
-  }
+    if (checkColor(selectedCards) /*&& checkShape(selectedCards) && checkNumber(selectedCards) */ === true) {
+        console.log('set found')
+
+    } else {console.log('borken')}
+    
 }
 
-function checkColor(n) {
-    if (n[0].color == n[1].color && n[1].color == n[2].color) return true;
-    else if (n[0].color != n[1].color && n[0].color != n[2].color && n[1].color != n[2].color) return true;
+
+function checkColor(selectedCards) {
+    if (selectedCards[0].color == selectedCards[1].color == selectedCards[2].color) return true;
+    else if (selectedCards[0].color != selectedCards[1].color && selectedCards[0].color != selectedCards[2].color && selectedCards[1].color != selectedCards[2].color) return true;
     else return false;
      }
 function checkShape(n) {
-    if (n[0].shape == n[1].shape && n[1].shape == n[2].shape) return true;
+    if (n[0].shape == n[1].shape == n[2].shape) return true;
     else if (n[0].shape != n[1].shape && n[0].shape != n[2].shape && n[1].shape != n[2].shape) return true;
     else return false;
      }
 function checkNumber(n) {
-    if (n[0].number == n[1].number && n[1].number == n[2].number) return true;
+    if (n[0].number == n[1].number == n[2].number) return true;
     else if (n[0].number != n[1].number && n[0].number != n[2].number && n[1].number != n[2].number) return true;
     else return false;
      }
