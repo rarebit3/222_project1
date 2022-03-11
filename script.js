@@ -1,5 +1,5 @@
 //Global Variables
-const gameDeck = [
+let deck = [
   {selected: false, location: '', color: 'red', shape: 'oval', number: 1},
   {selected: false, location: '', color: 'red', shape: 'oval', number: 2},
   {selected: false, location: '', color: 'red', shape: 'oval', number: 3},
@@ -28,13 +28,11 @@ const gameDeck = [
   {selected: false, location: '', color: 'purple', shape: 'squiggle', number: 2},
   {selected: false, location: '', color: 'purple', shape: 'squiggle', number: 3}
   ]
-let deck = gameDeck;
 let placedCards = [];
 let selectedCards = [];
 let setsFound = 0;
 const allCardSlots = document.querySelectorAll("div.card");
 const cardsRemaining = document.querySelector("#cardsRemaining");
-
 cardsRemaining.innerText = `Cards Remaining: ${deck.length}`;
 let foundSets = [];
 
@@ -58,14 +56,42 @@ divLocation.innerText = `${card.location}, ${card.color}, ${card.shape}, ${card.
 placedCards.push(card);
 deck.splice(randomIndex, 1);
 cardsRemaining.innerText = `Cards Remaining: ${deck.length}`;
-//console.log(placedCards)
+
 return deck;
 }
 
 function resetGame() {
 placedCards = [];
 setsFound = 0;
-deck = gameDeck;
+deck = [
+  {selected: false, location: '', color: 'red', shape: 'oval', number: 1},
+  {selected: false, location: '', color: 'red', shape: 'oval', number: 2},
+  {selected: false, location: '', color: 'red', shape: 'oval', number: 3},
+  {selected: false, location: '', color: 'red', shape: 'diamond', number: 1},
+  {selected: false, location: '', color: 'red', shape: 'diamond', number: 2},
+  {selected: false, location: '', color: 'red', shape: 'diamond', number: 3},
+  {selected: false, location: '', color: 'red', shape: 'squiggle', number: 1},
+  {selected: false, location: '', color: 'red', shape: 'squiggle', number: 2},
+  {selected: false, location: '', color: 'red', shape: 'squiggle', number: 3},
+  {selected: false, location: '', color: 'green', shape: 'oval', number: 1},
+  {selected: false, location: '', color: 'green', shape: 'oval', number: 2},
+  {selected: false, location: '', color: 'green', shape: 'oval', number: 3},
+  {selected: false, location: '', color: 'green', shape: 'diamond', number: 1},
+  {selected: false, location: '', color: 'green', shape: 'diamond', number: 2},
+  {selected: false, location: '', color: 'green', shape: 'diamond', number: 3},
+  {selected: false, location: '', color: 'green', shape: 'squiggle', number: 1},
+  {selected: false, location: '', color: 'green', shape: 'squiggle', number: 2},
+  {selected: false, location: '', color: 'green', shape: 'squiggle', number: 3},
+  {selected: false, location: '', color: 'purple', shape: 'oval', number: 1},
+  {selected: false, location: '', color: 'purple', shape: 'oval', number: 2},
+  {selected: false, location: '', color: 'purple', shape: 'oval', number: 3},
+  {selected: false, location: '', color: 'purple', shape: 'diamond', number: 1},
+  {selected: false, location: '', color: 'purple', shape: 'diamond', number: 2},
+  {selected: false, location: '', color: 'purple', shape: 'diamond', number: 3},
+  {selected: false, location: '', color: 'purple', shape: 'squiggle', number: 1},
+  {selected: false, location: '', color: 'purple', shape: 'squiggle', number: 2},
+  {selected: false, location: '', color: 'purple', shape: 'squiggle', number: 3}
+  ]
 allCardSlots.forEach((e) => {
   e.innerText = "";
 });
@@ -77,13 +103,12 @@ cardsRemaining.innerText = `Cards Remaining: ${deck.length}`;
 clearSelected();
 }
 
+document.querySelector('div#startScreen').addEventListener('click', /*goto game.html*/)
+
 //some syntax credited to Tim ellis
 allCardSlots.forEach((e, divLocation) => {
 e.addEventListener("click", function clickDiv() {
-  console.log(e.selected)
-  e.selected = !e.selected;
-  e.selected ? e.classList.add("highlight") : e.classList.remove("highlight");
-  console.log(e.selected)
+  e.classList.toggle('highlight')
   if (!selectedCards.includes(placedCards[divLocation]))
     selectedCards.push(placedCards[divLocation]);
   else selectedCards.pop();
@@ -102,14 +127,13 @@ if (
 ) { console.log('set found')
   selectedCards.forEach(e => { foundSets.push(e)
     });
-  const allHighlighted = document.querySelectorAll("div.highlight")
-  allHighlighted.forEach(e => {
-    dealCard(e)});
-  clearSelected(selected)
-  // });
+  document.querySelectorAll("div.highlight").forEach(e => {
+    dealCard(e)
+    e.classList.toggle("highlight")});
+  clearSelected(selectedCards)
   } else {
-  document.querySelectorAll(".highlight").forEach((e) => {
-    e.classList.remove("highlight");
+  document.querySelectorAll("div.highlight").forEach((e) => {
+    e.classList.toggle("highlight");
   });
   selectedCards.forEach((e) => {
     selectedCards.pop();
