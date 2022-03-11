@@ -105,7 +105,7 @@ clearSelected();
 
 document.querySelector('div#startScreen').addEventListener('click', /*goto game.html*/)
 
-//some syntax credited to Tim ellis
+
 allCardSlots.forEach((e, divLocation) => {
 e.addEventListener("click", function clickDiv() {
   e.classList.toggle('highlight')
