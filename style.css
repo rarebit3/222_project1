@@ -1,65 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+  margin: 0;
+}
+button {
+  padding: 6px;
+  font-size: larger;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 10vh;
+  height: 8vh;
+  margin: 20px;
+}
+#idResetGame {
+  padding: 10px;
+  font-size: larger;
+}
+#idcheckSet {
+  padding: 1px;
+  font-size: medium;
+}
+.card {
+  border-radius: 25px;
+  height: 20%;
+  width: 30%;
+  border: 1px solid orange;
+}
+.highlight {
+  height: 20%;
+  width: 30%;
+  border: 3px solid red;
+}
 
-  * {
-    box-sizing: border-box; 
-  }
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: row;
-    margin: 0;
-  }
-  button {
-      display: flex;
-      flex-direction: column;
-      width: 10vh;
-  }
-  .card {
-    height: 20%;
-    width: 30%;
-    border: 1px solid orange;
-    }
-  .highlight {
-    height: 20%;
-    width: 30%;
-    border: 3px solid red;
-  }
-
-  .col-1 {
-    justify-content: center;
-    align-items: center;
-    background: green;
-    flex: 1;
-    max-width: 20vh;
-  }
-  .col-2 {
-    display: flex;
-    flex-direction: column;
-    flex: 5;
-    flex-wrap: wrap;
-  }
-  .content {
-    display: flex;
-    flex-direction: row;
-  }
-  .cardContainer {
-    display: flex;
-    justify-content: space-around;
-    flex: 3;
-    min-height: 80vh;
-    flex-wrap: wrap;
-  }
-  .content > aside {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: blue;
-    flex: 1;
-    max-width: 20vh;
-  }
-  header, footer {
-    background: red;
-    height: 10vh;
-  }
-  header, footer, article, nav, aside {
-    padding: 1em;
-  }
+.col-1 {
+  justify-content: center;
+  align-items: center;
+  background: #cddfe7;
+  flex: 1;
+  max-width: 20vh;
+}
+.col-2 {
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+  flex-wrap: wrap;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+}
+.cardContainer {
+  
+  display: flex;
+  justify-content: space-around;
+  flex: 3;
+  min-height: 80vh;
+  flex-wrap: wrap;
+}
+.content > aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #457a93;
+  flex: 1;
+  max-width: 20vh;
+}
+ header,
+footer {
+  
+  text-align: center;
+  font-size: 30PT;
+  background: #2e5161;
+  height: 10vh;
+}
+header,
+footer,
+article,
+nav,
+aside {
+  border-radius: 10px;
+  padding: 1em;
+}
